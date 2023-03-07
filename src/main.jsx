@@ -6,14 +6,19 @@ import Cuadricula from "./components/Cuadricula";
 import App from "./components/App";
 import Saludo from "./components/Saludo";
 import "./main.css";
+import Home from "./components/Home";
+import CriptoPage from "./components/cripto/CriptoPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Cuadricula />} />
-          <Route path="saludo" element={<Saludo />} />
+          <Route index element={<Home />} />
+        </Route>
+        <Route path="/criptomonedas" element={<App />}>
+            <Route  index element={<Cuadricula />} />
+            <Route path=':id' element={<CriptoPage />}/>
         </Route>
         <Route path="*" element={<Pagina404 />} />
       </Routes>
