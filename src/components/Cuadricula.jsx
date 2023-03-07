@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import axios from "axios";
-import Cripto from "./Cripto";
-import "./App.css";
+import Cripto from "./cripto/Cripto";
+import "./Cuadricula.css";
 
 
-function App() {
+function Cuadricula() {
 
   const API_URL = import.meta.env.VITE_API_URL;
   const [criptos, setCriptos] = useState();
@@ -43,4 +43,4 @@ return (
   )
 }
 
-export default App
+export default Cuadricula;
