@@ -7,16 +7,18 @@ import "./CriptoPage.css"
 const CriptoPage = () => {
   const params = useParams();
 
-  const cripto = usePetition(`assets/${params.id}`);
-  const history = usePetition(`assets/${params.id}/history?interval=d1`);
+  const [cripto,cargandoCripto] = usePetition(`assets/${params.id}`);
+  const [history, cargandoHistory] = usePetition(`assets/${params.id}/history?interval=d1`);
+
+  if (cargandoCripto || cargandoHistory)  return <span>Cargando...</span>
+    
+  
 
   return (
-    <>
-      <h1>Soy una Criptomoneda {params.id}</h1>
-      {cripto && ( <CriptoInfo  cripto={cripto}/> )}
-      <h2>Historial</h2>
-      {history && (<CriptoHistory history={history}/>)}
-    </>
+    <div className="cripto-page-container">
+    { cripto && <CriptoInfo cripto={cripto} /> }
+    { history && <CriptoHistory history={history} /> }
+  </div>
   );
 };
 
